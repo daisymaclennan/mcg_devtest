@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import Head from 'next/head'
 import Link from "next/link";
 import BackgroundLines from "./BackgroundLines"
+import RightSidebar from "./RightSidebar"
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -55,6 +56,7 @@ const Layout = ({ children }) => (
     </Head>
     <GlobalStyle />
     <BackgroundLines />
+    <RightSidebar />
     {children}
   </div>
 )
