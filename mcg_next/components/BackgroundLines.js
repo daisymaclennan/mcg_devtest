@@ -15,6 +15,7 @@ const BackgroundLines = styled.div`
     #D3D3D3 calc(1px + calc(calc(100vw - 84px) /4))
   );
   border-right: 1px solid #D3D3D3;
+  z-index: 1;
 `
 
 export default BackgroundLines

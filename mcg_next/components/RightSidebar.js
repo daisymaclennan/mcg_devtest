@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import SocialIcons from "./SocialIcons"
 
 const RightSidebar = ({ className }) => (
   <div className={className}>
     <span>En</span>
     <h4>Welcome to MCG</h4>
-    <div>
-    </div>
+    <div></div>
+    <SocialIcons />
   </div>
 )
 
@@ -19,17 +20,24 @@ display: flex;
 justify-content: space-between;
 align-items: flex-end;
 flex-direction: column;
-
-span, h4{
-  transform: rotate(90deg);
-}
+z-index: 1;
 
 span{
   margin-right: 9px;
+  font-weight: 600;
 }
 
 h4{
-  margin-right: -45px;
+  margin-right: -37px;
+  transform: rotate(90deg);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+div{
+  height: 12px;
 }
 `
 

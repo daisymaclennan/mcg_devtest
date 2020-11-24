@@ -2,8 +2,10 @@ import React from "react"
 import { createGlobalStyle } from "styled-components"
 import Head from 'next/head'
 import Link from "next/link";
+import Logo from "./Logo"
 import BackgroundLines from "./BackgroundLines"
 import RightSidebar from "./RightSidebar"
+import ScrollNavigate from "./ScrollNavigate"
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -24,8 +26,8 @@ const GlobalStyle = createGlobalStyle`
 body{
   background-image: linear-gradient(180deg, #F4F4F4 0%, #FFFFFF 100%);
   background-repeat: no-repeat;
-  margin: 0 40px;
   font-family: 'Gilroy';
+  height: 300vw;
 }
 
 `
@@ -35,27 +37,11 @@ const Layout = ({ children }) => (
     <Head>
       <title>MCG</title>
       <link rel="icon" href="/favicon.ico" />
-      <link
-          rel="preload"
-          href="/fonts/Gilroy-Bold.otf"
-          as="font"
-          crossOrigin=""
-      />
-      <link
-          rel="preload"
-          href="/fonts/Gilroy-ExtraBold.otf"
-          as="font"
-          crossOrigin=""
-      />
-      <link
-          rel="preload"
-          href="/fonts/Gilroy-Light.otf"
-          as="font"
-          crossOrigin=""
-      />
     </Head>
     <GlobalStyle />
+    <Logo />
     <BackgroundLines />
+    <ScrollNavigate />
     <RightSidebar />
     {children}
   </div>

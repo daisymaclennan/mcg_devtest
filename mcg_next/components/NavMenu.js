@@ -6,6 +6,7 @@ const NavMenu = styled.div`
   right: 43px;
 
   display: flex;
+  z-index: 2;
 `
 
 export default NavMenu
