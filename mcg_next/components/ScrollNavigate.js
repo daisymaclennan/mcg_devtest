@@ -15,8 +15,8 @@ const ScrollNavigate = ({ className }) => (
 
 const StyledScrollNavigate = styled(ScrollNavigate)`
   position: fixed;
-  left: 20px;
-  bottom: 80px;
+  left: 30px;
+  bottom: 100px;
   z-index: 1;
   transform: rotate(90deg);
   transform-origin: 0;
@@ -35,6 +35,11 @@ const StyledScrollNavigate = styled(ScrollNavigate)`
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-weight: 400;
+  }
+
+  @media screen and (max-width: 800px){
+    left: 20px;
+  bottom: 80px;
   }
 `
 

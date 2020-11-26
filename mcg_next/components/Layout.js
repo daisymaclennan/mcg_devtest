@@ -1,11 +1,11 @@
-import React from "react"
-import { createGlobalStyle } from "styled-components"
-import Head from 'next/head'
+import React from "react";
+import { createGlobalStyle } from "styled-components";
+import Head from "next/head";
 import Link from "next/link";
-import Logo from "./Logo"
-import BackgroundLines from "./BackgroundLines"
-import RightSidebar from "./RightSidebar"
-import ScrollNavigate from "./ScrollNavigate"
+import Logo from "./Logo";
+import BackgroundLines from "./BackgroundLines";
+import RightSidebar from "./RightSidebar";
+import ScrollNavigate from "./ScrollNavigate";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -30,8 +30,12 @@ body{
   height: 300vw;
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vw);
+
+  &::-webkit-scrollbar {
+  display: none;
 }
-`
+}
+`;
 
 const Layout = ({ children }) => (
   <div>
@@ -46,6 +50,6 @@ const Layout = ({ children }) => (
     <RightSidebar />
     {children}
   </div>
-)
+);
 
-export default Layout
+export default Layout;

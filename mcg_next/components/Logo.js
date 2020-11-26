@@ -11,11 +11,15 @@ const Logo = ({ className }) => {
 
 const StyledLogo = styled(Logo)`
   position: fixed;
-  left: 60px;
+  left: 80px;
   top: 20px;
   z-index: 1;
 
-  width: 150px
-`
+  width: 150px;
+  
+  @media screen and (max-width: 800px) {
+    left: 60px;
+  }
+`;
 
 export default StyledLogo
