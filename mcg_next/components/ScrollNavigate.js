@@ -33,7 +33,7 @@ const StyledScrollNavigate = styled(ScrollNavigate)`
   span{
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.3em;
     font-weight: 400;
   }
 `

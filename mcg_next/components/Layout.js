@@ -28,8 +28,9 @@ body{
   background-repeat: no-repeat;
   font-family: 'Gilroy';
   height: 300vw;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vw);
 }
-
 `
 
 const Layout = ({ children }) => (

@@ -16,10 +16,14 @@ text-decoration: none;
 font-size: 12px;
 display: flex;
 align-items: center;
+position: relative;
+padding-left: 30px;
 
 svg{
-  height: 20px;
-  margin-right: 10px;
+  height: 14px;
+  position: absolute;
+  left: 0; 
+  top: 0;
 }
 `
 

@@ -2,16 +2,16 @@ import React, { useEffect } from "react"
 import styled from "styled-components"
 import {animated, useSpring} from 'react-spring'
 
-const BackgroundWords = ({ className, words, scrollY}) => {
+const BackgroundWords = ({ className, words}) => {
   const [wordOneProps, setWordOne] = useSpring(() => ({transform: "translateX(0)"}))
   const [wordTwoProps, setWordTwo] = useSpring(() => ({transform: "translateX(0)"}))
   const wordsArr = words.split(" ")
 
   useEffect(() => {
-    console.log(scrollY)
-    setWordOne({transform: `translateX(-${scrollY}px)`})
-    setWordTwo({transform: `translateX(${scrollY}px)`})
-  });
+    setWordOne({transform: `translateX(-${window.scrollY}px)`});
+    setWordTwo({transform: `translateX(${window.scrollY}px)`});
+  }, []);
+  
 
   return(
     <div className={className}>
@@ -34,6 +34,15 @@ div{
 
 div:last-of-type{
   margin-left: 30vh;
+}
+
+@media screen and (max-width: 800px){
+  position: static;
+  transform: rotate(0deg);   
+
+  div:last-of-type{
+    margin-left: 20px;
+  }
 }
 `
 

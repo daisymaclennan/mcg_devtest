@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import styled from "styled-components"
 import { animated, useSpring } from "react-spring"
 
-const ImageBackground = ({ className, src, alt, scrollY }) => {
+const ImageBackground = ({ className, src, alt}) => {
   const [imageProps, setImage] = useSpring(() => ({transform: "translateX(0) scaleX(-1)"}))
 
   /*useEffect(() => {

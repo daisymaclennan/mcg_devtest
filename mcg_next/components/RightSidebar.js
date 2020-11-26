@@ -28,12 +28,12 @@ span{
 }
 
 h4{
-  margin-right: -37px;
+  margin-right: -60px;
   transform: rotate(90deg);
   font-weight: 400;
   text-transform: uppercase;
   font-size: 12px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.3em;
 }
 
 div{

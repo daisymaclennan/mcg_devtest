@@ -14,6 +14,7 @@ const BackgroundLines = styled.div`
     rgba(0,0,0,0) calc(1px + calc(calc(100vw - 84px) /4)),
     #D3D3D3 calc(1px + calc(calc(100vw - 84px) /4))
   );
+  pointer-events: none;
   border-right: 1px solid #D3D3D3;
   z-index: 1;
 `

@@ -7,6 +7,13 @@ const NavMenu = styled.div`
 
   display: flex;
   z-index: 2;
+
+  @media screen and (max-width: 800px){
+    display: none;
+    > *{
+      display: none;
+    }
+  }
 `
 
 export default NavMenu

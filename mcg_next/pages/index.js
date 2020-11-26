@@ -15,16 +15,18 @@ export default function Page({ frontPages, careers, brands }) {
   //States which handle every elements animations
   const [scrollY, setScrollY] = useState(0)
   const [canvasProps, setCanvas] = useSpring(() => ({left: "0px"}))
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    let mql = window.matchMedia('(min-width: 100px)')
+    let mql = window.matchMedia('(min-width: 800px)')
 
-    scrollAnimation(mql.matches)
+    scrollAnimation(mql.matches)   
 
     window.addEventListener('scroll', () => scrollAnimation(mql.matches))
 
-    mql.addListener(() => {
+    mql.addEventListener("change", () => {
       scrollAnimation(mql.matches)
+      console.log("changes")
     })
 
 
@@ -33,7 +35,7 @@ export default function Page({ frontPages, careers, brands }) {
 
   const scrollAnimation = (isDesktop) => {
     setScrollY(window.scrollY)
-    setCanvas({left: `-${window.scrollY}px`})
+    setCanvas({left: `-${isDesktop ? window.scrollY : 0}px`})
   }
   return (
     <Layout>
@@ -44,7 +46,7 @@ export default function Page({ frontPages, careers, brands }) {
       </NavMenu>
 
       <HorizontalScrollCanvas canvasProps={ canvasProps }>
-        <ContentSection number={parseInt(frontPages[0].acf.number)}>
+        <ContentSection number={parseInt(frontPages[0].acf.number)} className="static-mob">
           <ContentHead
             number={frontPages[0].acf.number}
             smallTitle="Welcome"
@@ -62,7 +64,7 @@ export default function Page({ frontPages, careers, brands }) {
         <BackgroundWords words={frontPages[0].acf.display_title} scrollY={scrollY}/>
 
         {/*Start of brands*/}
-        <ContentSection number={parseInt(frontPages[1].acf.number)}>
+        <ContentSection number={parseInt(frontPages[1].acf.number)} className="static-mob">
           <ContentHead
             number={frontPages[1].acf.number}
             smallTitle={frontPages[1].acf.menu_title}
@@ -78,7 +80,7 @@ export default function Page({ frontPages, careers, brands }) {
         </ContentSection>
 
         {/*Start of careers*/}
-        <ContentSection number={parseInt(frontPages[2].acf.number)}>
+        <ContentSection number={parseInt(frontPages[2].acf.number)} className="static-mob">
           <ContentHead
             number={frontPages[2].acf.number}
             smallTitle={frontPages[2].acf.menu_title}
