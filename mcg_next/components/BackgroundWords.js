@@ -2,34 +2,25 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { animated, useSpring } from "react-spring";
 
-const BackgroundWords = ({ className, words }) => {
-  const [wordOneProps, setWordOne] = useSpring(() => ({
-    transform: "translateX(0)",
+const BackgroundWords = ({ className, words, scrollY }) => {
+  const [{ springscrollY }, springsetScrollY] = useSpring(() => ({
+    springscrollY: 0,
   }));
-  const [wordTwoProps, setWordTwo] = useSpring(() => ({
-    transform: "translateX(0)",
-  }));
+
+  springsetScrollY({ springscrollY: scrollY });
+
+  const interpOne = springscrollY.interpolate((o) => `translateX(-${o}px)`);
+
+  const interpTwo = springscrollY.interpolate((o) => `translateX(${o}px)`);
+
   const wordsArr = words.split(" ");
-
-  useEffect(() => {
-    scrollWordAnimation();
-
-    window.addEventListener("scroll", () => scrollWordAnimation());
-
-    return () =>
-      window.removeEventListener("scroll", () => scrollWordAnimation());
-  }, []);
-
-  const scrollWordAnimation = () => {
-    setWordOne({ transform: `translateX(-${window.scrollY}px)` });
-    setWordTwo({ transform: `translateX(${window.scrollY}px)` });
-    console.log("we're scrolling");
-  };
 
   return (
     <div className={className}>
-      <animated.div style={wordOneProps}>{wordsArr[0]}</animated.div>
-      <animated.div className="second-word" style={wordTwoProps}>
+      <animated.div style={{ transform: interpOne }}>
+        {wordsArr[0]}
+      </animated.div>
+      <animated.div className="second-word" style={{ transform: interpTwo }}>
         {wordsArr[1]}
       </animated.div>
     </div>
@@ -54,15 +45,22 @@ const StyledBackgroundWords = styled(BackgroundWords)`
   @media screen and (max-width: 800px) {
     position: static;
     transform: rotate(0deg);
-    display: flex;
 
     div {
       font-size: 100px;
     }
 
     div:last-of-type {
-      margin-left: 20px;
+      margin-left: 0;
     }
+  }
+
+  @media screen and (max-width: 1500px) {
+    right: -35vw;
+  }
+
+  @media screen and (max-width: 1050px) {
+    right: -50vw;
   }
 `;
 

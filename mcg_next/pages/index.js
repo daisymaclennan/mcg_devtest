@@ -12,33 +12,19 @@ import ArrowLink from "../components/ArrowLink";
 import BackgroundWords from "../components/BackgroundWords";
 import FauxPage from "../components/FauxPage";
 import debounce from "../lib/debounce";
+import BrandSquare from "../components/BrandSquare";
 
 export default function Page({ frontPages, careers, brands }) {
   //States which handle every elements animations
   const [scrollY, setScrollY] = useState(0);
-  const [canvasProps, setCanvas] = useSpring(() => ({ left: "0px" }));
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    let mql = window.matchMedia("(min-width: 800px)");
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", debounce(handleScroll));
+    return () => window.removeEventListener("scroll", debounce(handleScroll));
+  }, [debounce]);
 
-    scrollAnimation(mql.matches);
-
-    window.addEventListener("scroll", () => scrollAnimation(mql.matches));
-
-    mql.addEventListener("change", () => {
-      scrollAnimation(mql.matches);
-      console.log("changes");
-    });
-
-    return () =>
-      window.removeEventListener("scroll", () => scrollAnimation(mql.matches));
-  }, []);
-
-  const scrollAnimation = (isDesktop) => {
-    setScrollY(window.scrollY);
-    setCanvas({ left: `-${isDesktop ? window.scrollY : 0}px` });
-  };
   return (
     <Layout>
       <NavMenu>
@@ -53,11 +39,11 @@ export default function Page({ frontPages, careers, brands }) {
         ))}
       </NavMenu>
 
-      <HorizontalScrollCanvas canvasProps={canvasProps}>
+      <HorizontalScrollCanvas scrollY={scrollY}>
         <FauxPage>
           <ContentSection
             number={parseInt(frontPages[0].acf.number)}
-            className="static-mob"
+            scrollY={scrollY}
           >
             <ContentHead
               number={frontPages[0].acf.number}
@@ -86,7 +72,7 @@ export default function Page({ frontPages, careers, brands }) {
         <FauxPage>
           <ContentSection
             number={parseInt(frontPages[1].acf.number)}
-            className="static-mob"
+            scrollY={scrollY}
           >
             <ContentHead
               number={frontPages[1].acf.number}
@@ -101,12 +87,28 @@ export default function Page({ frontPages, careers, brands }) {
               linkText={frontPages[1].acf.link_text}
             />
           </ContentSection>
+          <div
+            css={`
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              position: absolute;
+              right: 10vw;
+              height: calc(100vh - 200px);
+              margin-top: 100px;
+              margin-bottom: 100px;
+            `}
+          >
+            {brands.map((brand) => (
+              <BrandSquare img={brand.acf.image} scrollY={scrollY} />
+            ))}
+          </div>
         </FauxPage>
 
         <FauxPage>
           <ContentSection
             number={parseInt(frontPages[2].acf.number)}
-            className="static-mob"
+            scrollY={scrollY}
           >
             <ContentHead
               number={frontPages[2].acf.number}

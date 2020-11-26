@@ -13,6 +13,18 @@ const StyledImageBackground = styled(ImageBackground)`
   top: 0;
   right: 0px;
   object-fit: cover;
+
+  @media screen and (max-width: 1500px) {
+    right: -200px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    right: -300px;
+  }
+
+  @media screen and (max-width: 1050px) {
+    display: none;
+  }
 `;
 
 export default StyledImageBackground;

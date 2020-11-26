@@ -1,9 +1,15 @@
+import React from "react";
 import styled from "styled-components";
 
-const ContentSection = styled.div`
+const ContentSection = ({ className, children }) => {
+  return <div className={className}>{children}</div>;
+};
+
+const StyledContentSection = styled(ContentSection)`
   position: absolute;
   top: 35vh;
   height: 50vh;
+  left: 200px;
   width: 40vw;
   z-index: 1;
   max-width: 400px;
@@ -17,8 +23,9 @@ const ContentSection = styled.div`
     width: calc(100vw - 90px);
   }
 
-  ${(props) =>
-    props.number > 1 ? `left: ${props.number * 100 - 90}vw` : `left: 10vw;`}
+  @media screen and (max-width: 1300px) {
+    left: 100px;
+  }
 `;
 
-export default ContentSection;
+export default StyledContentSection;
