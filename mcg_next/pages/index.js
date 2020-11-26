@@ -41,7 +41,13 @@ export default function Page({ frontPages, careers, brands }) {
     <Layout>
       <NavMenu>
       {frontPages.map(frontPage => (
-        <NavMenuItem title={frontPage.acf.menu_title} number={frontPage.acf.number} key={frontPage.id} />
+        <NavMenuItem 
+          title={frontPage.acf.menu_title} 
+          number={frontPage.acf.number} 
+          key={frontPage.id} 
+          page={page}
+          setPage={setPage}
+        />
       ))}
       </NavMenu>
 

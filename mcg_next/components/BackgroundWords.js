@@ -8,10 +8,18 @@ const BackgroundWords = ({ className, words}) => {
   const wordsArr = words.split(" ")
 
   useEffect(() => {
+    scrollWordAnimation()   
+
+    window.addEventListener('scroll', () => scrollWordAnimation())
+
+    return () => window.removeEventListener('scroll', () => scrollWordAnimation())
+  }, [])
+
+  const scrollWordAnimation = () => {
     setWordOne({transform: `translateX(-${window.scrollY}px)`});
     setWordTwo({transform: `translateX(${window.scrollY}px)`});
-  }, []);
-  
+    console.log("we're scrolling")
+  }
 
   return(
     <div className={className}>

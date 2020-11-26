@@ -24,7 +24,6 @@ const StyledHorizontalScrollCanvas = styled(HorizontalScrollCanvas)`
   position: static!important;
   width: 100vw;
   height: auto;
-  padding-bottom: 100px;
 }
 `
 

@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const ContentSection = styled.div`
 position: absolute;
-top: 25vh;
+top: 35vh;
 height: 50vh;
 width: 40vw;
 z-index: 1;
