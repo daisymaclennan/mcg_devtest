@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { animated, useSpring } from "react-spring";
 
-const BrandSquare = ({ className, img, scrollY, level }) => {
+const BrandSquare = ({ className, img, scrollY }) => {
   const [{ springscrollY }, springsetScrollY] = useSpring(() => ({
     springscrollY: 0,
   }));
 
-  const parallaxLevel = 1;
+  const parallaxLevel = 2;
   springsetScrollY({ springscrollY: scrollY });
 
   const interpSquare = springscrollY.interpolate(
@@ -15,11 +15,7 @@ const BrandSquare = ({ className, img, scrollY, level }) => {
   );
 
   return (
-    <animated.div
-      className={className}
-      style={{ transform: interpSquare }}
-      key={img.url}
-    >
+    <animated.div className={className} key={img.url}>
       <img src={img.url} alt={img.alt} />
     </animated.div>
   );
@@ -32,6 +28,15 @@ const StyledBrandSquare = styled(BrandSquare)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  img {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+    width: 200px;
+  }
 `;
 
 export default StyledBrandSquare;

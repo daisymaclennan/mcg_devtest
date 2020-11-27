@@ -2,8 +2,25 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { animated, useSpring } from "react-spring";
 
-const ImageBackground = ({ className, src, alt }) => {
-  return <img className={className} src={src} alt={alt} />;
+const ImageBackground = ({ className, src, alt, scrollY }) => {
+  const [{ springscrollY }, springsetScrollY] = useSpring(() => ({
+    springscrollY: 0,
+  }));
+
+  const parallaxLevel = 1.7;
+  springsetScrollY({ springscrollY: scrollY });
+
+  const interpSquare = springscrollY.interpolate(
+    (o) => `translateX(${o / parallaxLevel}px) scaleX(-1)`
+  );
+  return (
+    <animated.img
+      className={className}
+      src={src}
+      alt={alt}
+      style={{ transform: interpSquare }}
+    />
+  );
 };
 
 const StyledImageBackground = styled(ImageBackground)`

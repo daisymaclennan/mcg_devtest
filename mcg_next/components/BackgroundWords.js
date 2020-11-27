@@ -10,11 +10,9 @@ const BackgroundWords = ({ className, words, scrollY }) => {
   springsetScrollY({ springscrollY: scrollY });
 
   const interpOne = springscrollY.interpolate((o) => `translateX(-${o}px)`);
-
   const interpTwo = springscrollY.interpolate((o) => `translateX(${o}px)`);
 
   const wordsArr = words.split(" ");
-
   return (
     <div className={className}>
       <animated.div style={{ transform: interpOne }}>

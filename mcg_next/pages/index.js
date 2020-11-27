@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
+import { useSpring, animated, interpolate } from "react-spring";
 import Layout from "../components/Layout";
 import NavMenuItem from "../components/NavMenuItem";
 import NavMenu from "../components/NavMenu";
-import { useSpring, animated, interpolate } from "react-spring";
-import React, { useEffect, useState } from "react";
 import ImageBackground from "../components/ImageBackground";
 import HorizontalScrollCanvas from "../components/HorizontalScrollCanvas";
 import ContentSection from "../components/ContentSection";
@@ -13,9 +13,11 @@ import BackgroundWords from "../components/BackgroundWords";
 import FauxPage from "../components/FauxPage";
 import debounce from "../lib/debounce";
 import BrandSquare from "../components/BrandSquare";
+import CareerBox from "../components/CareerBox";
+import BrandsContainer from "../components/BrandsContainer";
 
 export default function Page({ frontPages, careers, brands }) {
-  //States which handle every elements animations
+  //State which is updated with the scroll point of the window
   const [scrollY, setScrollY] = useState(0);
   const [page, setPage] = useState(0);
 
@@ -44,6 +46,7 @@ export default function Page({ frontPages, careers, brands }) {
           <ContentSection
             number={parseInt(frontPages[0].acf.number)}
             scrollY={scrollY}
+            alignment="left"
           >
             <ContentHead
               number={frontPages[0].acf.number}
@@ -73,6 +76,7 @@ export default function Page({ frontPages, careers, brands }) {
           <ContentSection
             number={parseInt(frontPages[1].acf.number)}
             scrollY={scrollY}
+            alignment="right"
           >
             <ContentHead
               number={frontPages[1].acf.number}
@@ -87,22 +91,15 @@ export default function Page({ frontPages, careers, brands }) {
               linkText={frontPages[1].acf.link_text}
             />
           </ContentSection>
-          <div
-            css={`
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              position: absolute;
-              right: 10vw;
-              height: calc(100vh - 200px);
-              margin-top: 100px;
-              margin-bottom: 100px;
-            `}
-          >
+          <BrandsContainer>
             {brands.map((brand) => (
-              <BrandSquare img={brand.acf.image} scrollY={scrollY} />
+              <BrandSquare
+                img={brand.acf.image}
+                scrollY={scrollY}
+                key={brand.id}
+              />
             ))}
-          </div>
+          </BrandsContainer>
         </FauxPage>
 
         <FauxPage>
@@ -123,6 +120,11 @@ export default function Page({ frontPages, careers, brands }) {
               linkText={frontPages[2].acf.link_text}
             />
           </ContentSection>
+          <div>
+            {careers.map((career) => (
+              <CareerBox career={career.acf} key={career.id} />
+            ))}
+          </div>
         </FauxPage>
       </HorizontalScrollCanvas>
     </Layout>

@@ -35,6 +35,12 @@ body{
   display: none;
 }
 }
+
+@media screen and (max-width: 800px){
+  body{
+    margin: 0;
+  }
+}
 `;
 
 const Layout = ({ children }) => (

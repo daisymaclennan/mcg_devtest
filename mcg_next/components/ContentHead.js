@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ContentHead = ({ className, number, smallTitle }) => (
-  <div className={className}>
+  <div className={`${className} content-head`}>
     <span>
       <span>{number}</span>
       <hr />
