@@ -15,8 +15,11 @@ import debounce from "../lib/debounce";
 import BrandSquare from "../components/BrandSquare";
 import CareerBox from "../components/CareerBox";
 import BrandsContainer from "../components/BrandsContainer";
+import frontPages from "../data/frontPages";
+import careers from "../data/careers";
+import brands from "../data/brands";
 
-export default function Page({ frontPages, careers, brands }) {
+export default function Page() {
   //State which is updated with the scroll point of the window
   const [scrollY, setScrollY] = useState(0);
   const [page, setPage] = useState(0);
@@ -129,29 +132,4 @@ export default function Page({ frontPages, careers, brands }) {
       </HorizontalScrollCanvas>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const res = await fetch(
-    "http://localhost:8888/wp-json/wp/v2/front-page?order=asc"
-  );
-  const frontPages = await res.json();
-
-  const careersRes = await fetch(
-    "http://localhost:8888/wp-json/wp/v2/job-listing?order=asc"
-  );
-  const careers = await careersRes.json();
-
-  const brandsRes = await fetch(
-    "http://localhost:8888/wp-json/wp/v2/brand?order=asc"
-  );
-  const brands = await brandsRes.json();
-
-  return {
-    props: {
-      frontPages,
-      careers,
-      brands,
-    },
-  };
 }
