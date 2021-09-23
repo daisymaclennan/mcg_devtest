@@ -1,4 +1,5 @@
 # mcg_devtest
+This project was part of the hiring process for my job at MCG/DBLX/Huler. I was given an image and then had the freedom to create whatever I wanted from that. I decided to create a horizontal scrolling effect and then altered the moving speed of the main image so it was still in the frame on the second slide. 
 
 ## Set up locally
 
